@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="CautaRetete.Pages.LandingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CautaRetete.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Welcome!" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="36" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" PlaceholderText="username" InputScope="AlphanumericHalfWidth" Header="Username"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" PlaceholderText="password" InputScope="Password" Header="Password"/>
+        <Button Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Stretch"/>
+        <TextBlock Text="Not having an account yet? Register now!" Grid.Row="4" Grid.Column="1" FontSize="18" TextWrapping="Wrap"/>
+        <Button Content="Register" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" FontSize="24" HorizontalAlignment="Stretch"/>
+    </Grid>
+</Page>
