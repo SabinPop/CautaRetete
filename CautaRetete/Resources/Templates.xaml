@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    x:Class="CautaRetete.GridViewItemImageText"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="using:CautaRetete.Models">
+    <DataTemplate x:Key="ControlGridViewItem" x:DataType="data:GridItemRecipe">
+        <Grid Width="400" Background="Blue" Opacity="0.8">
+            <Image Source="{Binding ImageLocation}" Height="auto" Width="auto" Stretch="Uniform" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1"
+                    Background="LightGray" Opacity=".75">
+                <TextBlock Text="{Binding Title}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding ImageLocation}" Style="{ThemeResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    <TextBlock Text="Title" Style="{ThemeResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

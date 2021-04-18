@@ -10,20 +10,36 @@
     xmlns:landing="using:CautaRetete.Pages">
 
     <Grid>
-        <NavigationView x:Name="NavigationViewControl" >
+        <NavigationView x:Name="NavigationViewControl" Loaded="NavigationViewControl_Loaded" ItemInvoked="NavigationViewControl_ItemInvoked" BackRequested="NavigationViewControl_BackRequested" SelectionChanged="NavigationViewControl_SelectionChanged" Canvas.ZIndex="3">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Menu item 1" x:Name="A" Icon="Accept"/>
-                <NavigationViewItem Content="Menu item 2" x:Name="B" Icon="Account"/>
-                <NavigationViewItem Content="Menu item 1" x:Name="C" Icon="Admin"/>
+                <NavigationViewItem Content="Retete" x:Name="Recipes" Tag="recipes">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe91b;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Ingrediente" x:Name="Ingredients" Tag="ingredients">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe907;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Condimente" x:Name="Condimente" Tag="spices">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe921;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="D" PlaceholderText="Search" MinWidth="220" >
+                <AutoSuggestBox x:Name="Search" PlaceholderText="Search" MinWidth="220">
                     <AutoSuggestBox.QueryIcon>
                         <SymbolIcon Symbol="Find"/>
                     </AutoSuggestBox.QueryIcon>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
         </NavigationView>
+
+        <Frame x:Name="contentFrame" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
+
+        </Frame>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

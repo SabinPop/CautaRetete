@@ -16,17 +16,17 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Welcome!" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="36" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" PlaceholderText="username" InputScope="AlphanumericHalfWidth" Header="Username"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" PlaceholderText="password" InputScope="Password" Header="Password"/>
-        <Button Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Stretch"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" FontSize="24" PlaceholderText="username" InputScope="AlphanumericHalfWidth" Header="" Margin="0,23,0,23"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" FontSize="24" PlaceholderText="password" InputScope="Password" Header="" Margin="0,24,0,23"/>
+        <Button Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch" FontSize="24" HorizontalAlignment="Stretch" Margin="0,23,0,23"/>
         <TextBlock Text="Not having an account yet? Register now!" Grid.Row="4" Grid.Column="1" FontSize="18" TextWrapping="Wrap"/>
-        <Button Content="Register" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" FontSize="24" HorizontalAlignment="Stretch"/>
+        <Button Content="Register" Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch" FontSize="24" HorizontalAlignment="Stretch" Margin="0,47,0,0"/>
     </Grid>
 </Page>
