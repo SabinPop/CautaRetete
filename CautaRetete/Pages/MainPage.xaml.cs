@@ -35,8 +35,8 @@ namespace CautaRetete
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
-            ("recipes", typeof(Recipes)),
-            ("ingredients", typeof(Ingredients)),
+            ("recipes", typeof(Pages.Recipes)),
+            ("ingredients", typeof(Pages.Ingredients)),
             ("spices", typeof(Spices)),
         };
 

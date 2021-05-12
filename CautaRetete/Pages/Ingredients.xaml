@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="CautaRetete.Ingredients"
+    x:Class="CautaRetete.Pages.Ingredients"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CautaRetete"
@@ -8,7 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <GridView
+        x:Name="IngredientsGridView"
+        ItemTemplate="{StaticResource ControlGridViewIngredient}"
+        SelectionMode="Single" Margin="0,50,0,0">
+        <GridView.ItemContainerStyle>
+            <Style TargetType="GridViewItem">
+                <Setter Property="Margin" Value="10, 10, 10, 10"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            </Style>
+        </GridView.ItemContainerStyle>
+        <GridView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <ItemsWrapGrid Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+        </GridView.ItemsPanel>
 
-    </Grid>
+    </GridView>
 </Page>

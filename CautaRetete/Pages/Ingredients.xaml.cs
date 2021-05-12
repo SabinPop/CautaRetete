@@ -21,19 +21,13 @@ namespace CautaRetete.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Recipes : Page
+    public sealed partial class Ingredients : Page
     {
-        public Recipes()
+        public Ingredients()
         {
             this.InitializeComponent();
 
-            RecipesGridView.ItemsSource = new RecipeItems().ItemRecipes;
-        }
-
-        private void RecipesGridView_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            // Here I'm calculating the number of columns I want based on
-            // the width of the page
+            IngredientsGridView.ItemsSource = new IngredientItems().ItemIngredients;
         }
     }
 }

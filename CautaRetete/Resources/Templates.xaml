@@ -19,4 +19,19 @@
 
         </Grid>
     </DataTemplate>
+    <DataTemplate x:Key="ControlGridViewIngredient" x:DataType="data:GridItemIngredient">
+        <Grid Width="400" Background="Blue" Opacity="0.8">
+            <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1"
+                    Background="LightGray" Opacity=".75">
+                <TextBlock Text="{Binding Title}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Title}" Style="{ThemeResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                    <TextBlock Text="Title" Style="{ThemeResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

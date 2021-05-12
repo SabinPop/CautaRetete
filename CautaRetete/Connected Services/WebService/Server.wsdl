@@ -1,0 +1,1390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetRecipes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRecipesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipesResult" type="tns:ArrayOfRecipes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRecipes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Recipes" nillable="true" type="tns:Recipes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Recipes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRecipeById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipeByIdResult" type="tns:Recipes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeIdByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeIdByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipeIdByNameResult" type="tns:Recipes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="recipe" type="tns:Recipes" />
+            <s:element minOccurs="0" maxOccurs="1" name="ingredientList" type="tns:ArrayOfIngredients" />
+            <s:element minOccurs="0" maxOccurs="1" name="spiceList" type="tns:ArrayOfSpices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIngredients">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ingredients" nillable="true" type="tns:Ingredients" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ingredients">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSpices">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Spices" nillable="true" type="tns:Spices" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Spices">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostRecipeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRecipeIngredients">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeIngredientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipeIngredientsResult" type="tns:ArrayOfIngredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeSpices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeSpicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipeSpicesResult" type="tns:ArrayOfSpices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostRecipeString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ingredientList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="spiceList" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostRecipeStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PostRecipeOnlyString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostRecipeOnlyStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipeName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipeDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRecipeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIngredients">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIngredientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIngredientsResult" type="tns:ArrayOfIngredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIngredientByIdResult" type="tns:Ingredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientIdByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientIdByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIngredientIdByNameResult" type="tns:Ingredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientsByRecipeId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIngredientsByRecipeIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIngredientsByRecipeIdResult" type="tns:ArrayOfIngredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ingredient" type="tns:Ingredients" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostIngredientResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PostIngredientString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ingredientName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostIngredientStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ingredientName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIngredientResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteIngredientResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSpices">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSpicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpicesResult" type="tns:ArrayOfSpices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpiceById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpiceByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpiceByIdResult" type="tns:Spices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpiceIdByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpiceIdByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpiceIdByNameResult" type="tns:Spices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpicesByRecipeId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpicesByRecipeIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpicesByRecipeIdResult" type="tns:ArrayOfSpices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spice" type="tns:Spices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostSpiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PostSpiceString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spiceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostSpiceStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="spiceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSpiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSpiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExistsIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsIngredientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistsIngredientResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsSpiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistsSpiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistsRecipeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipeIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ingredientId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipeIngredientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistsRecipeIngredientResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipeSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="spiceId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistsRecipeSpiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistsRecipeSpiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipeIngredient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ingredientId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipeIngredientResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteRecipeSpice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="spiceId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecipeSpiceResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRecipesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecipes" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecipesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecipeById" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecipeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeIdByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecipeIdByName" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeIdByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecipeIdByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:PostRecipe" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:PostRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeIngredientsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecipeIngredients" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeIngredientsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecipeIngredientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeSpicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecipeSpices" />
+  </wsdl:message>
+  <wsdl:message name="GetRecipeSpicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecipeSpicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeStringSoapIn">
+    <wsdl:part name="parameters" element="tns:PostRecipeString" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeStringSoapOut">
+    <wsdl:part name="parameters" element="tns:PostRecipeStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeOnlyStringSoapIn">
+    <wsdl:part name="parameters" element="tns:PostRecipeOnlyString" />
+  </wsdl:message>
+  <wsdl:message name="PostRecipeOnlyStringSoapOut">
+    <wsdl:part name="parameters" element="tns:PostRecipeOnlyStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRecipe" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRecipe" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIngredients" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIngredientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIngredientById" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIngredientByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientIdByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIngredientIdByName" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientIdByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIngredientIdByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientsByRecipeIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIngredientsByRecipeId" />
+  </wsdl:message>
+  <wsdl:message name="GetIngredientsByRecipeIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIngredientsByRecipeIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:PostIngredient" />
+  </wsdl:message>
+  <wsdl:message name="PostIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:PostIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostIngredientStringSoapIn">
+    <wsdl:part name="parameters" element="tns:PostIngredientString" />
+  </wsdl:message>
+  <wsdl:message name="PostIngredientStringSoapOut">
+    <wsdl:part name="parameters" element="tns:PostIngredientStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateIngredient" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteIngredient" />
+  </wsdl:message>
+  <wsdl:message name="DeleteIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpices" />
+  </wsdl:message>
+  <wsdl:message name="GetSpicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpiceByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpiceById" />
+  </wsdl:message>
+  <wsdl:message name="GetSpiceByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpiceByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpiceIdByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpiceIdByName" />
+  </wsdl:message>
+  <wsdl:message name="GetSpiceIdByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpiceIdByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpicesByRecipeIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpicesByRecipeId" />
+  </wsdl:message>
+  <wsdl:message name="GetSpicesByRecipeIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpicesByRecipeIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:PostSpice" />
+  </wsdl:message>
+  <wsdl:message name="PostSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:PostSpiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostSpiceStringSoapIn">
+    <wsdl:part name="parameters" element="tns:PostSpiceString" />
+  </wsdl:message>
+  <wsdl:message name="PostSpiceStringSoapOut">
+    <wsdl:part name="parameters" element="tns:PostSpiceStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSpice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSpiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSpice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSpiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistsIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistsIngredient" />
+  </wsdl:message>
+  <wsdl:message name="ExistsIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistsIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistsSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistsSpice" />
+  </wsdl:message>
+  <wsdl:message name="ExistsSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistsSpiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistsRecipe" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistsRecipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistsRecipeIngredient" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistsRecipeIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistsRecipeSpice" />
+  </wsdl:message>
+  <wsdl:message name="ExistsRecipeSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistsRecipeSpiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeIngredientSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeIngredient" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeIngredientSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSpiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeSpice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecipeSpiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecipeSpiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServerSoap">
+    <wsdl:operation name="GetRecipes">
+      <wsdl:input message="tns:GetRecipesSoapIn" />
+      <wsdl:output message="tns:GetRecipesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeById">
+      <wsdl:input message="tns:GetRecipeByIdSoapIn" />
+      <wsdl:output message="tns:GetRecipeByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIdByName">
+      <wsdl:input message="tns:GetRecipeIdByNameSoapIn" />
+      <wsdl:output message="tns:GetRecipeIdByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipe">
+      <wsdl:input message="tns:PostRecipeSoapIn" />
+      <wsdl:output message="tns:PostRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIngredients">
+      <wsdl:input message="tns:GetRecipeIngredientsSoapIn" />
+      <wsdl:output message="tns:GetRecipeIngredientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeSpices">
+      <wsdl:input message="tns:GetRecipeSpicesSoapIn" />
+      <wsdl:output message="tns:GetRecipeSpicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeString">
+      <wsdl:input message="tns:PostRecipeStringSoapIn" />
+      <wsdl:output message="tns:PostRecipeStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeOnlyString">
+      <wsdl:input message="tns:PostRecipeOnlyStringSoapIn" />
+      <wsdl:output message="tns:PostRecipeOnlyStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecipe">
+      <wsdl:input message="tns:UpdateRecipeSoapIn" />
+      <wsdl:output message="tns:UpdateRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <wsdl:input message="tns:DeleteRecipeSoapIn" />
+      <wsdl:output message="tns:DeleteRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredients">
+      <wsdl:input message="tns:GetIngredientsSoapIn" />
+      <wsdl:output message="tns:GetIngredientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientById">
+      <wsdl:input message="tns:GetIngredientByIdSoapIn" />
+      <wsdl:output message="tns:GetIngredientByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientIdByName">
+      <wsdl:input message="tns:GetIngredientIdByNameSoapIn" />
+      <wsdl:output message="tns:GetIngredientIdByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientsByRecipeId">
+      <wsdl:input message="tns:GetIngredientsByRecipeIdSoapIn" />
+      <wsdl:output message="tns:GetIngredientsByRecipeIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredient">
+      <wsdl:input message="tns:PostIngredientSoapIn" />
+      <wsdl:output message="tns:PostIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredientString">
+      <wsdl:input message="tns:PostIngredientStringSoapIn" />
+      <wsdl:output message="tns:PostIngredientStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIngredient">
+      <wsdl:input message="tns:UpdateIngredientSoapIn" />
+      <wsdl:output message="tns:UpdateIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteIngredient">
+      <wsdl:input message="tns:DeleteIngredientSoapIn" />
+      <wsdl:output message="tns:DeleteIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpices">
+      <wsdl:input message="tns:GetSpicesSoapIn" />
+      <wsdl:output message="tns:GetSpicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceById">
+      <wsdl:input message="tns:GetSpiceByIdSoapIn" />
+      <wsdl:output message="tns:GetSpiceByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceIdByName">
+      <wsdl:input message="tns:GetSpiceIdByNameSoapIn" />
+      <wsdl:output message="tns:GetSpiceIdByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpicesByRecipeId">
+      <wsdl:input message="tns:GetSpicesByRecipeIdSoapIn" />
+      <wsdl:output message="tns:GetSpicesByRecipeIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostSpice">
+      <wsdl:input message="tns:PostSpiceSoapIn" />
+      <wsdl:output message="tns:PostSpiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostSpiceString">
+      <wsdl:input message="tns:PostSpiceStringSoapIn" />
+      <wsdl:output message="tns:PostSpiceStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSpice">
+      <wsdl:input message="tns:UpdateSpiceSoapIn" />
+      <wsdl:output message="tns:UpdateSpiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSpice">
+      <wsdl:input message="tns:DeleteSpiceSoapIn" />
+      <wsdl:output message="tns:DeleteSpiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsIngredient">
+      <wsdl:input message="tns:ExistsIngredientSoapIn" />
+      <wsdl:output message="tns:ExistsIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsSpice">
+      <wsdl:input message="tns:ExistsSpiceSoapIn" />
+      <wsdl:output message="tns:ExistsSpiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipe">
+      <wsdl:input message="tns:ExistsRecipeSoapIn" />
+      <wsdl:output message="tns:ExistsRecipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeIngredient">
+      <wsdl:input message="tns:ExistsRecipeIngredientSoapIn" />
+      <wsdl:output message="tns:ExistsRecipeIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeSpice">
+      <wsdl:input message="tns:ExistsRecipeSpiceSoapIn" />
+      <wsdl:output message="tns:ExistsRecipeSpiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeIngredient">
+      <wsdl:input message="tns:DeleteRecipeIngredientSoapIn" />
+      <wsdl:output message="tns:DeleteRecipeIngredientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeSpice">
+      <wsdl:input message="tns:DeleteRecipeSpiceSoapIn" />
+      <wsdl:output message="tns:DeleteRecipeSpiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServerSoap" type="tns:ServerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRecipes">
+      <soap:operation soapAction="http://tempuri.org/GetRecipes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeById">
+      <soap:operation soapAction="http://tempuri.org/GetRecipeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIdByName">
+      <soap:operation soapAction="http://tempuri.org/GetRecipeIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipe">
+      <soap:operation soapAction="http://tempuri.org/PostRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIngredients">
+      <soap:operation soapAction="http://tempuri.org/GetRecipeIngredients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeSpices">
+      <soap:operation soapAction="http://tempuri.org/GetRecipeSpices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeString">
+      <soap:operation soapAction="http://tempuri.org/PostRecipeString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeOnlyString">
+      <soap:operation soapAction="http://tempuri.org/PostRecipeOnlyString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecipe">
+      <soap:operation soapAction="http://tempuri.org/UpdateRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <soap:operation soapAction="http://tempuri.org/DeleteRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredients">
+      <soap:operation soapAction="http://tempuri.org/GetIngredients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientById">
+      <soap:operation soapAction="http://tempuri.org/GetIngredientById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientIdByName">
+      <soap:operation soapAction="http://tempuri.org/GetIngredientIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientsByRecipeId">
+      <soap:operation soapAction="http://tempuri.org/GetIngredientsByRecipeId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredient">
+      <soap:operation soapAction="http://tempuri.org/PostIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredientString">
+      <soap:operation soapAction="http://tempuri.org/PostIngredientString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIngredient">
+      <soap:operation soapAction="http://tempuri.org/UpdateIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteIngredient">
+      <soap:operation soapAction="http://tempuri.org/DeleteIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpices">
+      <soap:operation soapAction="http://tempuri.org/GetSpices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceById">
+      <soap:operation soapAction="http://tempuri.org/GetSpiceById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceIdByName">
+      <soap:operation soapAction="http://tempuri.org/GetSpiceIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpicesByRecipeId">
+      <soap:operation soapAction="http://tempuri.org/GetSpicesByRecipeId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSpice">
+      <soap:operation soapAction="http://tempuri.org/PostSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSpiceString">
+      <soap:operation soapAction="http://tempuri.org/PostSpiceString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSpice">
+      <soap:operation soapAction="http://tempuri.org/UpdateSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSpice">
+      <soap:operation soapAction="http://tempuri.org/DeleteSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsIngredient">
+      <soap:operation soapAction="http://tempuri.org/ExistsIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsSpice">
+      <soap:operation soapAction="http://tempuri.org/ExistsSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipe">
+      <soap:operation soapAction="http://tempuri.org/ExistsRecipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeIngredient">
+      <soap:operation soapAction="http://tempuri.org/ExistsRecipeIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeSpice">
+      <soap:operation soapAction="http://tempuri.org/ExistsRecipeSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeIngredient">
+      <soap:operation soapAction="http://tempuri.org/DeleteRecipeIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeSpice">
+      <soap:operation soapAction="http://tempuri.org/DeleteRecipeSpice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServerSoap12" type="tns:ServerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRecipes">
+      <soap12:operation soapAction="http://tempuri.org/GetRecipes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeById">
+      <soap12:operation soapAction="http://tempuri.org/GetRecipeById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIdByName">
+      <soap12:operation soapAction="http://tempuri.org/GetRecipeIdByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipe">
+      <soap12:operation soapAction="http://tempuri.org/PostRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeIngredients">
+      <soap12:operation soapAction="http://tempuri.org/GetRecipeIngredients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecipeSpices">
+      <soap12:operation soapAction="http://tempuri.org/GetRecipeSpices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeString">
+      <soap12:operation soapAction="http://tempuri.org/PostRecipeString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRecipeOnlyString">
+      <soap12:operation soapAction="http://tempuri.org/PostRecipeOnlyString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecipe">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipe">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredients">
+      <soap12:operation soapAction="http://tempuri.org/GetIngredients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientById">
+      <soap12:operation soapAction="http://tempuri.org/GetIngredientById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientIdByName">
+      <soap12:operation soapAction="http://tempuri.org/GetIngredientIdByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIngredientsByRecipeId">
+      <soap12:operation soapAction="http://tempuri.org/GetIngredientsByRecipeId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredient">
+      <soap12:operation soapAction="http://tempuri.org/PostIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostIngredientString">
+      <soap12:operation soapAction="http://tempuri.org/PostIngredientString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIngredient">
+      <soap12:operation soapAction="http://tempuri.org/UpdateIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteIngredient">
+      <soap12:operation soapAction="http://tempuri.org/DeleteIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpices">
+      <soap12:operation soapAction="http://tempuri.org/GetSpices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceById">
+      <soap12:operation soapAction="http://tempuri.org/GetSpiceById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpiceIdByName">
+      <soap12:operation soapAction="http://tempuri.org/GetSpiceIdByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpicesByRecipeId">
+      <soap12:operation soapAction="http://tempuri.org/GetSpicesByRecipeId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSpice">
+      <soap12:operation soapAction="http://tempuri.org/PostSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostSpiceString">
+      <soap12:operation soapAction="http://tempuri.org/PostSpiceString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSpice">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSpice">
+      <soap12:operation soapAction="http://tempuri.org/DeleteSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsIngredient">
+      <soap12:operation soapAction="http://tempuri.org/ExistsIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsSpice">
+      <soap12:operation soapAction="http://tempuri.org/ExistsSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipe">
+      <soap12:operation soapAction="http://tempuri.org/ExistsRecipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeIngredient">
+      <soap12:operation soapAction="http://tempuri.org/ExistsRecipeIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRecipeSpice">
+      <soap12:operation soapAction="http://tempuri.org/ExistsRecipeSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeIngredient">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRecipeIngredient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecipeSpice">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRecipeSpice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Server">
+    <wsdl:port name="ServerSoap" binding="tns:ServerSoap">
+      <soap:address location="http://localhost:52885/Server.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServerSoap12" binding="tns:ServerSoap12">
+      <soap12:address location="http://localhost:52885/Server.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

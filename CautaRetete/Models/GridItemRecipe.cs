@@ -18,11 +18,11 @@ namespace CautaRetete.Models
 
     }
 
-    class Items
+    class RecipeItems
     {
         public List<GridItemRecipe> ItemRecipes = new List<GridItemRecipe>();
 
-        public Items()
+        public RecipeItems()
         {
             ItemRecipes = get();
         }
