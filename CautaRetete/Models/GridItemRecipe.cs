@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -24,15 +25,27 @@ namespace CautaRetete.Models
 
         public RecipeItems()
         {
-            ItemRecipes = get();
+            //ItemRecipes = getAsync().Result;
+            getAsync().Wait();
+            ItemRecipes = getAsync().Result;
         }
 
-        public static List<GridItemRecipe> get()
+        public async System.Threading.Tasks.Task<List<GridItemRecipe>> getAsync()
         {
             List<GridItemRecipe> x = new List<GridItemRecipe>();
-            for(int i = 1; i < 10; i++)
+            using (var client = new WebService.ServerSoapClient())
             {
-                x.Add(new GridItemRecipe(new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), "Titlu xxx" + i));
+                var response = await client.GetRecipesAsync();
+                //response.Body.GetRecipesResult.ToList().ForEach(x =>
+                //        RecipesGridView.Items.Add(
+                //            new GridItemRecipe(
+                //                new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), x.Name)
+                //            )
+                //    );
+
+                response.Body.GetRecipesResult.ToList().ForEach(r => x.Add(
+                    new GridItemRecipe(new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), r.Name)
+                    ));
             }
             return x;
         }

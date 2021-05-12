@@ -11,7 +11,7 @@
     <GridView
         x:Name="RecipesGridView"
         ItemTemplate="{StaticResource ControlGridViewItem}"
-        SelectionMode="Single" SizeChanged="RecipesGridView_SizeChanged" Margin="0,50,0,0">
+        SelectionMode="Single" SizeChanged="RecipesGridView_SizeChanged" Margin="0,50,0,0" Loading="RecipesGridView_Loading">
         <GridView.ItemContainerStyle>
             <Style TargetType="GridViewItem">
                 <Setter Property="Margin" Value="10, 10, 10, 10"/>
