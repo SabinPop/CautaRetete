@@ -25,9 +25,7 @@ namespace CautaRetete.Models
 
         public RecipeItems()
         {
-            //ItemRecipes = getAsync().Result;
             getAsync().Wait();
-            ItemRecipes = getAsync().Result;
         }
 
         public async System.Threading.Tasks.Task<List<GridItemRecipe>> getAsync()
@@ -43,7 +41,7 @@ namespace CautaRetete.Models
                 //            )
                 //    );
 
-                response.Body.GetRecipesResult.ToList().ForEach(r => x.Add(
+                response.Body.GetRecipesResult.ToList().ForEach(r => ItemRecipes.Add(
                     new GridItemRecipe(new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), r.Name)
                     ));
             }

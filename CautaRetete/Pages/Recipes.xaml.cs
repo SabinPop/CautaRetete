@@ -33,23 +33,27 @@ namespace CautaRetete.Pages
         public Recipes()
         {
             this.InitializeComponent();
-            RecipesGridView.ItemsSource = new RecipeItems().ItemRecipes;
+            // RecipesGridView.ItemsSource = new RecipeItems().ItemRecipes;
+            GetRecipes();   
         }
 
         public async void GetRecipes()
         {
-            using (var client = new WebService.ServerSoapClient())
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
-                var response = await client.GetRecipesAsync();
-                //response.Body.GetRecipesResult.ToList().ForEach(x =>
-                //        RecipesGridView.Items.Add(
-                //            new GridItemRecipe(
-                //                new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), x.Name)
-                //            )
-                //    );
-                
-                response.Body.GetRecipesResult.ToList().ForEach(x => recipes.Add(x));
-            }
+                using (var client = new WebService.ServerSoapClient())
+                {
+                    var response = await client.GetRecipesAsync();
+                    response.Body.GetRecipesResult.ToList().ForEach(x =>
+                            RecipesGridView.Items.Add(
+                                new GridItemRecipe(
+                                    new Uri("http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"), x.Name)
+                                )
+                        );
+
+                    response.Body.GetRecipesResult.ToList().ForEach(x => recipes.Add(x));
+                }
+            });
         }
 
         private void RecipesGridView_SizeChanged(object sender, SizeChangedEventArgs e)
